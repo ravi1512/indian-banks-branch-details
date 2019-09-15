@@ -1,8 +1,8 @@
 import os
 import logging
 from flask import Flask
-from branch.database import db
-from branch.views import branch
+from database import db
+from views import branch
 
 app = Flask(__name__)
 
