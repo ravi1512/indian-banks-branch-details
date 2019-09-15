@@ -1,8 +1,8 @@
 import os
 import logging
 from flask import Flask
-from database import db
-from views import branch
+from branch.database import db
+from branch.views import branch
 
 
 def init_logger():
