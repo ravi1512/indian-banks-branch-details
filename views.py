@@ -3,13 +3,12 @@ from flask.blueprints import Blueprint
 from flask import render_template
 from sqlalchemy import ForeignKey
 
-# from database import db
+from database import db
 import util
 
 logging.config.dictConfig(yaml.load(open('logging.conf')))
 logger = logging.getLogger('console')
 branch = Blueprint('branch', __name__, template_folder='templates')
-from app import db
 
 
 class Branches(db.Model):
