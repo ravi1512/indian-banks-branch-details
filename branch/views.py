@@ -3,8 +3,8 @@ from flask.blueprints import Blueprint
 from flask import render_template
 from sqlalchemy import ForeignKey
 
-from database import db
-import util
+from branch.database import db
+from branch import util
 
 
 logging.config.dictConfig(yaml.load(open('logging.conf')))
