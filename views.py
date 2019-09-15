@@ -6,7 +6,7 @@ from sqlalchemy import ForeignKey
 from database import db
 import util
 
-logging.config.dictConfig(yaml.load(open('logging.conf')))
+logging.config.dictConfig(yaml.load(open('logging.conf'), yaml.SafeLoader))
 logger = logging.getLogger('console')
 branch = Blueprint('branch', __name__, template_folder='templates')
 
