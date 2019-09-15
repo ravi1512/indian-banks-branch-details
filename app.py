@@ -5,21 +5,12 @@ from database import db
 from views import branch
 
 app = Flask(__name__)
-
-
-def init_logger():
-    logging.basicConfig(filename='error.log', level=logging.DEBUG)
-
-
-def create_app():
-    app.config.from_object(os.environ['APP_SETTINGS'])
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    db.init_app(app)
-    init_logger()
-    app.register_blueprint(branch, url_prefix='')
-    return app
+app.config.from_object(os.environ['APP_SETTINGS'])
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db.init_app(app)
+logging.basicConfig(filename='error.log', level=logging.DEBUG)
+app.register_blueprint(branch, url_prefix='')
 
 
 if __name__ == '__main__':
-    app = create_app()
     app.run()
