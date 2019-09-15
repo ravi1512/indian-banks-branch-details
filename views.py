@@ -72,7 +72,8 @@ def get_branch_details(ifsccode):
         results = util.prepare_results(branch_details)
         if results:
             return render_template("branch_details.html", data=results)
-        return '<p>No results matched your query!</p>'
+        # no results matched
+        return '<p>No results matched your query!</p>', 404
     except Exception as fault:
         logger.error(fault, exc_info=True)
         logger.error("Something went wrong while fetching branch details. Error: %s", str(fault))
@@ -100,7 +101,8 @@ def list_all_branches(bank, city):
         results = util.prepare_results(branches)
         if results:
             return render_template("branch_details.html", data=results)
-        return '<p>No results matched your query!</p>'
+        # no results matched
+        return '<p>No results matched your query!</p>', 404
     except Exception as fault:
         logger.error(fault, exc_info=True)
         logger.error("Something went wrong while listing branches. Error: %s", str(fault))
