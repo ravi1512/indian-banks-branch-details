@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+<head>
+    <meta charset="UTF-8">
+    <title>Branch Details</title>
+        <table  class="table table-bordered">
+            <!-- table header -->
+          <tr>
+            <th>Bank</th>
+            <th>IFSC Code</th>
+            <th>Branch</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>District</th>
+            <th>State</th>
+           </tr>
+
+          <!-- table rows -->
+          {% for dict_item in data %}
+          <tr>
+             <td> {{ dict_item["bank_name"] }} </td>
+             <td> {{ dict_item["ifsc"] }} </td>
+             <td> {{ dict_item["branch"] }} </td>
+             <td> {{ dict_item["address"] }} </td>
+             <td> {{ dict_item["city"] }} </td>
+             <td> {{ dict_item["district"] }} </td>
+             <td> {{ dict_item["state"] }} </td>
+          </tr>
+          {% endfor %}
+        </table>
+</head>
+<body>
+
+</body>
+</html>
