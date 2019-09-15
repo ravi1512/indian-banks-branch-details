@@ -3,12 +3,13 @@ from flask.blueprints import Blueprint
 from flask import render_template
 from sqlalchemy import ForeignKey
 
-from database import db
+# from database import db
 import util
 
 logging.config.dictConfig(yaml.load(open('logging.conf')))
-logfile = logging.getLogger('file')
+logger = logging.getLogger('console')
 branch = Blueprint('branch', __name__, template_folder='templates')
+from app import db
 
 
 class Branches(db.Model):
@@ -74,8 +75,8 @@ def get_branch_details(ifsccode):
             return render_template("branch_details.html", data=results)
         return '<p>No results matched your query!</p>'
     except Exception as fault:
-        logfile.error(fault, exc_info=True)
-        logfile.error("Something went wrong while fetching branch details. Error: %s", str(fault))
+        logger.error(fault, exc_info=True)
+        logger.error("Something went wrong while fetching branch details. Error: %s", str(fault))
         return "Uh-OH! Something went wrong, we are looking into it."
 
 
@@ -102,6 +103,6 @@ def list_all_branches(bank, city):
             return render_template("branch_details.html", data=results)
         return '<p>No results matched your query!</p>'
     except Exception as fault:
-        logfile.error(fault, exc_info=True)
-        logfile.error("Something went wrong while listing branches. Error: %s", str(fault))
+        logger.error(fault, exc_info=True)
+        logger.error("Something went wrong while listing branches. Error: %s", str(fault))
         return "Uh-OH! Something went wrong, we are looking into it."
